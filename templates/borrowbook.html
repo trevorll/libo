@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="image.html">
+    <div class="">
+      {%for message in get_flashed_messages() %}
+      {{message}}
+      {%endfor%}
+    </div>
+  <body style="background:url(static/img/database.jpg)">
+    <div class="center">
+      <form class="" action="{{url_for('borrowbook')}}" method="post">
+        serialno <input type="number" name="serialno" value="" placeholder="serialno"><br>
+        <input type="submit" name="submit" value="SUBMIT" style="float:left !important">
+      </form>
+    </div>
+  </body>
+</html>

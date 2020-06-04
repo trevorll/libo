@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="image.html">
+  </head>
+
+  <img src="{{image}}" alt="default"></img>
+  <body class="center">
+    <div>
+      <div class="login">
+        {% for message in get_flashed_messages()%}
+        {{ message }}
+        {% endfor %}
+      </div>
+
+  <h1>  Welcome <span class="flexy">{{user}}</span></h1>
+    </div>
+    <p>this is what you ca do here book hostel register units and see your results</p>
+    <p>this is just the beginning you are yet to see greater things</p>
+    <div class= "center" style="float:center">
+      <a href="{{url_for('changepass')}}"> <button style="background: black" type="button" name="button">change password</button> </a>
+      <a href="{{url_for('user_logout')}}"> <button style="background: black" type="button" name="button">logout</button> </a>
+      <a href="{{url_for('book_hostel')}}"> <button style="background: black" type="button" name="button">book hostell</button> </a>
+      <a href="{{url_for('borrowbook')}}"> <button style="background: black" type="button" name="button">borrow book</button> </a>
+      <a href="{{url_for('availablebooks')}}"> <button style="background: black" type="button" name="button">available books</button> </a>
+      <a href="{{url_for('returnbook')}}"> <button style="background: black" type="button" name="button">return books</button> </a>
+
+    </div>
+    <div class="footer">
+      <footer style="color:purple" > <b></b>&copy <span>Godwill</span> </b> </footer>
+    </div>
+  </body>
+</html>
+<style media="screen">
+  body{
+    text-align: center;
+    background-color: blue;
+    color: white;
+    background: url(static/img/landscape.jpg)
+  }
+  img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    right: -760px;
+  }
+  .jack{
+    position: absolute;
+    left: 0px
+  }
+  .flexy{
+    color: blue
+  }
+  .footer{
+    position:absolute;
+    bottom:0;
+    margin-left: 50%;
+    background: black
+
+
+
+  }
+</style>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html><html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>users</h3>
+    <!-- <a href="{{url_for('search_user')}}"></a> -->
+    <thead>
+
+        <th>SEARCH RESULTS</th>
+        <table border="1">
+          <tr>
+            <th>Name</th>
+            <!-- <th>password</th> -->
+            <td> image </td>
+            <th>hostel</th>
+            <th>borrowed books</th>
+          </tr>
+            <tr>
+              <td>{{user}}</td>
+              <!-- <td>{{password}}</td> -->
+              <td> <img  src="{{image}}"> </td>
+              <td>{{name.hostel}}</td>
+              <td>{{books.serialno}}</td>
+            </tr>
+        </table>
+
+    </thead>
+  </body>
+</html>
+<style media="screen">
+img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+body{
+  text-align: center;
+}
+table{
+  margin-left: auto;
+  margin-right: auto
+}
+</style>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="static/css/forms.css">
+  </head>
+  <div class="center">
+  <h3>add hostel</h3>
+  <div style="color:red;" class="add_hostel">
+    {%for message in get_flashed_messages()%}
+    {{message}}
+    {%endfor%}
+  </div>
+  <body>
+    <form class="" action="{{url_for('add_hostel')}}" method="post">
+      <b>Hostel name</b> <input type="text" name="name" id="name" value=""placeholder="hostel name">
+      <input type="submit" name="sumit" value="SUBMIT">
+    </form>
+  </body>
+  </div>
+</html>

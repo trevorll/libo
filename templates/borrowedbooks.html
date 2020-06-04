@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="image.html">
+  <div class="">
+    {%for message in get_flashed_messages() %}
+    {{message}}
+    {%endfor%}
+  </div>
+  <body style="background:url(static/img/landscape.jpg)">
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>serial number</th>
+      </tr>
+      {%for book in books%}
+      <tr>
+        <td>{{book.name}}</td>
+        <td>{{book.serialno}}</td>
+      </tr>
+      {%endfor%}
+    </table>
+  </body>
+</html>
+<style media="screen">
+table{
+  border-style: doted;
+  width: 80%;
+  height: 500px;
+  border-width: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px
+}
+body{
+  background: url()
+
+}
+
+</style>

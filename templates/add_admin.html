@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="center">
+    <div style="color:red" class="admin">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+    <form class="" action="{{url_for('add_admin')}}" method="post">
+      <input type="text" name="username" value="" placeholder="username">
+      <input type="password" name="password" value="" placeholder="password">
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

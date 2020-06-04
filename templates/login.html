@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="static/css/forms.css">
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title style text-color:blue>TITLE</title>
+  </head>
+
+  <body class="center" style="background-image: url({{ url_for("static",filename="img/bg-09.jpg") }}">
+    <a href="{{url_for('test')}}" > <button type="button" style="background:black;float:center;" name="button">signup</button></a>
+    <div style="color:red;">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+
+    <div >
+    <form class="container" action="{{url_for('login')}}" method="post">
+      <b>name</b> <input type="text" name="name" id="name" value="" placeholder="name"><br>
+      <b>password</b> <input type="password" name="password" id="password" placeholder="password" value=""><br>
+      <input type="submit" name="submit" value="SUBMIT">
+
+    </form>
+    </div>
+    <div class="footer">
+      <footer >&copy <span>Godwill</span> </footer>
+    </div>
+
+
+
+  </body>
+
+
+</html>

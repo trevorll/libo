@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="static/css/forms.css">
+  </head>
+  <div class="center">
+  <div style="color:red">
+    {%for message in get_flashed_messages()%}
+    {{message}}
+    {%endfor%}
+
+  </div>
+  <div>
+    <form class="" action="{{url_for('book_hostel')}}" method="post">
+      username <input type="text" name="username" value=""id="username" placeholder="username">
+    book hostel <input type="text" name="hostel" value="" placeholder="book hostel">
+    <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </div>
+  
+  <div>
+    <h3>available hostels</h3>
+    <table>
+      {%for hostel in hostels%}
+      <tr>
+        <td>{{hostel.name}}</td>
+      </tr>
+      {%endfor%}
+    </table>
+  </div>
+
+
+  </body>
+</html>

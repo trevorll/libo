@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="image.html">
+  </head>
+  <div class="all">
+    {%for message in get_flashed_messages()%}
+    {{message}}
+    {%endfor%}
+  </div>
+
+  <body style="background:url(static/img/landscape.jpg)">
+    <h3>Delete</h3>
+    <form class="" action="{{url_for('delete')}}" method="post">
+      <input type="text" name="name" value="" placeholder="name">
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+    <h3>search</h3>
+  <form class="" action="{{url_for('search_user')}}" method="post">
+    <input type="text" name="search" id="search" placeholder="search user" value=""><br>
+    <input type="submit" name="search" value="search"><br>
+  </form>
+    <h3>users</h3>
+    <a href="{{url_for('users')}}"></a>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <table border="1">
+          <tr>
+            <th>Name</th>
+            <!-- <th>password</th> -->
+            <th> image </th>
+
+          </tr>
+            {%for user in users%}
+            <tr>
+              <td>{{user.name}}</td>
+              <!-- <td>{{user.password}}</td> -->
+              <td> <img  src="{{user.image}}"> </td>
+            </tr>
+            {%endfor%}
+        </table>
+      </tr>
+    </thead>
+  </body>
+</html>
+<style media="screen">
+img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+table{
+  border-style: doted;
+  border-width: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+body{
+  text-align: center;
+}
+
+</style>

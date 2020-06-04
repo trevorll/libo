@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="static/css/forms.css">
+  <link rel="stylesheet" href="image.html">
+  <body style="background:url(static/img/add-books.jpg)">
+  <div style="color:red" class="">
+    {% for message in get_flashed_messages() %}
+    {{message}}
+    {%endfor%}
+  </div>
+    <div class="center">
+      <form style="background:black" class="" action="{{url_for('add_book')}}" method="post">
+        serialno <input type="number" style"width:70%;" name="serialno" value="" placeholder="serial number"><br>
+        name <input type="text" name="name" value="" placeholder="name of the book"><br>
+        author <input type="text" name="author" value="" id="author" placeholder="author"><br>
+        section <input type="text" name="section" value="" placeholder="section"><br>
+        quantity <input type="number" name="quantity" value="" placeholder="nuber of books available"><br>
+        <input type="submit" name="submit" value="SUBMIT">
+      </form>
+
+    </div>
+  </body>
+</html>

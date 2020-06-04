@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>superadmin</title>
+    <h1>Welcome <span>{{user}}</span></h1>
+  </head>
+  <link rel="stylesheet" href="static/css/forms.css">
+  <body>
+    <div class="superadmin">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+    <a href="{{url_for('add_admin')}}">add admin</a>
+    <a href="{{url_for('delete')}}">delete user</a>
+    <div class="center">
+    <form class="" action="{{url_for('search_user')}}" method="post">
+      <input type="text" name="search" id="search" placeholder="search user" value=""><br>
+      <input type="submit" name="search" value="search"><br>
+    </form>
+  </div>
+
+  </body>
+</html>

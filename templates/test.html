@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title style text-color:blue>TITLE</title>
+  </head>
+  <link rel="stylesheet" href="static/css/forms.css">
+  <body class="center" >
+    <div style="color:red">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+    <div>
+    <form class="" action="{{url_for('test')}}" method="post">
+      first name <input type="text" name="fname" value="" placeholder="first name"><br>
+      last name <input type="text" name="lname" value="" placeholder="last name"><br>
+      other names <input type="text" name="oname" value="" placeholder="other names"><br>
+      username<input type="text" name="name" id="name" value="" placeholder="username"><br>
+      password <input type="password" name="password" placeholder="password" id="password" value=""><br>
+      repeat password <input type="password" name="rep_pass" value="" placeholder="repeat password"><br>
+      image <input type="text" name="image" value="" placeholder="image url"><br>
+      email <input type="email" name="email" value="" placeholder="email address"><br>
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </div>
+
+  </body>
+</html>
+<style>
+  table,tr,td,th{
+    width:500px;
+
+    border-color:red;
+    th;
+    }
+    img{
+      width: 150px;
+      height:200px;
+    }
+    body{
+      background: url(/home/godwill/test1/great-app/great-app/static/img/books.jpg) 0 0 no-repeat fixed;
+}
+</style>

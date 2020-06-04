@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="image.html">
+    <body class="center" style="background:url(static/img/landscape.jpg)">
+    <div style="color:red">
+      {%for message in get_flashed_messages() %}
+      {{message}}
+      {%endfor%}
+    </div>
+    <div>
+      <form  class="" action="{{url_for('returnbook')}}" method="post">
+        serialno <input style="height:40px !important width:20em !important;" type="number" name="serialno" value="" placeholder="serialno"><br>
+        <input type="submit" name="submit" value="SUBMIT" style="float:left !important">
+      </form>
+    </div>
+  </body>
+</html>
+<style media="screen">
+  input[type=numeric] {
+    .a{
+      height: 20px !important;
+    }
+}
+</style>

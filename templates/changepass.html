@@ -1,0 +1,28 @@
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title style text-color:blue>TITLE</title>
+  </head>
+  <link rel="stylesheet" href="static/css/forms.css">
+  <nav>
+    <!-- <a href="{{url_for('test')}}">signup</a> -->
+  </nav>
+  <body class="center">
+    <div style="color:red" class="changepass">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+    <div>
+    <form action="{{url_for('changepass')}}" method="post">
+      name<input type="text" name="name" id="name" value="" placeholder="name"><br>
+      password <input type="password" name="prev_pass" id="prev_pass" placeholder="previous password" value=""><br>
+      new password <input type="password" name="new_pass" value="" id="new_pass" placeholder="new password">
+      <input type="submit" name="submit" value="SUBMIT">
+    </form>
+  </div>
+
+
+  </body>
+</html>
