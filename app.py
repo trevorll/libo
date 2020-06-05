@@ -14,7 +14,15 @@ from models import *
 
 app = Flask(__name__,template_folder='templates')
 app.secret_key = 'godwill65'
-app.config["SQLALCHEMY_DATABASE_URI"]='postgresql://postgres:godwill63@localhost/ap'
+POSTGRES = {
+    'user': 'postgres',
+    'pw': 'godwill63',
+    'db': 'ap',
+    'host': 'localhost',
+    'port': '5432',
+}
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
+%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 db.init_app(app)
 app.config.update(
         DEBUG=True,
@@ -126,7 +134,7 @@ def admin():
             flash('please fill all fields')
         admin=Admin.query.filter(Admin.username==request.form['username']).first()
         if not admin:
-            flash('Sorry you are notan admin please contact the super admin')
+            flash('Sorry you are not an admin please contact the super admin')
         elif not sha256_crypt.verify(request.form['password'], admin.password):
             flash('Wrong password please check the password')
         else:
