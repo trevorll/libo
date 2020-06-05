@@ -15,9 +15,9 @@ from models import *
 app = Flask(__name__,template_folder='templates')
 app.secret_key = 'godwill65'
 POSTGRES = {
-    'user': 'postgres',
+    'user': 'godwill',
     'pw': 'godwill63',
-    'db': 'ap',
+    'db': 'godwill',
     'host': 'localhost',
     'port': '5432',
 }
