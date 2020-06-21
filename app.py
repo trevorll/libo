@@ -1,5 +1,5 @@
-import os
 from passlib.hash import sha256_crypt
+import random
 import os
 from flask_mail import Message,Mail
 import re
@@ -42,49 +42,80 @@ def login():
         if not request.form["name"] or not request.form["password"]:
             flash('please fill all fields')
             return render_template('login.html')
-        user=genius.query.filter(genius.name==request.form['name']).first()
+        verify=number.query.filter(number.name==request.form['name'].capitalize()).first()
+        user=genius.query.filter(genius.name==request.form['name'].capitalize()).first()
         pas = request.form['password']
         if not user:
             flash('sign up first')
         elif not sha256_crypt.verify(pas, user.password):
                 flash('please enter the correct credetials')
+        elif verify:
+            flash('please verify your email address ')
+            return render_template('verify.html')
         else:
             session['user']=user.name
             return render_template('success.html', user=session['user'], image=user.image)
     return render_template('login.html')
 
-@app.route('/success', methods=['POST','GET'])
+@app.route('/success')
 def success():
     if 'user' in session:
-        return render_template('success.html',user=session['user'])
-
+        use=genius.query.filter(genius.name==session['user']).first()
+        return render_template('success.html',user=session['user'],image=use.image)
     return render_template('test.html')
+
+@app.route('/image.html', methods=['GET', 'POST'])
+def image():
+    return render_template('image.html')
+
 @app.route('/signup',methods=['POST','GET'])
 def test():
     if request.method == 'POST':
 
-        newuser=genius(fname=request.form['fname'],lname=request.form['lname'],oname=request.form['oname'], name=request.form["name"],password=request.form["password"],image=request.form["image"],reg_date=dt.now(), email=request.form['email'])
+        newuser=genius(fname=request.form['fname'].capitalize(),lname=request.form['lname'].capitalize(),oname=request.form['oname'].capitalize(), name=request.form["name"].capitalize(),password=request.form["password"],image=request.form["image"],reg_date=dt.now(), email=request.form['email'])
+        verify=number.query.filter(number.name==request.form['name'].capitalize()).first()
         if not request.form['fname'] or not request.form['lname'] or not request.form['oname'] or not request.form['name'] or not request.form["password"] or not request.form['rep_pass']or not request.form['email']:
             flash("please fill all fiels")
         elif request.form['password'] != request.form['rep_pass']:
             flash('passwords don\'t match')
+        elif verify:
+            flash('please verify your email address ')
+            return render_template('verify.html')
         elif genius.query.filter(genius.name==request.form['name']).first():
             flash("user already exists")
         else:
+            newuser.save()
+            num = random.randint(1000, 10**4)
+            numb=number(name=request.form['name'].capitalize(), number=num)
+            numb.save()
             msg = Message('trial mail',
             sender = 'godwillsolutions@noreply.com',
             recipients=[request.form['email']])
-            msg.body='Hello '+request.form['name'] +' you have successfully signed in to GTREK solutions there are so many things you can do welcome'
+            msg.body='Hello '+request.form['name'] +' you have successfully signed in to GTREK solutions there are so many things you can do welcome please enter '+ str(num)+' to sign in'
             mail.send(msg)
-            newuser.save()
-            session['user']=newuser.name
-            user =genius.query.filter(genius.name==request.form['name']).first()
             flash('thank you very much, '+ request.form['name'] +' we have sent you an email')
-            return render_template('success.html',user=session['user'],image=user.image)
+            return render_template('verify.html')
     return render_template('test.html')
 @app.route('/users', methods=['GET','POST'])
 def users():
     return render_template('all.html',users=genius.query.all())
+
+@app.route('/verify', methods=['GET','POST'])
+def verify():
+    verify=number.query.filter(number.name==request.form['name'].capitalize()).first()
+    user =genius.query.filter(genius.name==request.form['name'].capitalize()).first()
+    newuser=genius.query.filter(genius.name==request.form['name']).first()
+    if request.method== 'POST':
+        numbe=verify.number
+        if not request.form['number'] or not request.form['name']:
+            flash('fill all fields')
+        elif not numbe:
+            flash('please enter the number we sent you')
+        else:
+            db.session.delete(verify)
+            db.session.commit()
+            session['user']=user.name
+            return render_template('success.html',user=session['user'],image=user.image)
 
 
 
@@ -92,13 +123,25 @@ def users():
 def search_user():
     if request.method== 'POST':
         #name=booked_hostel.query.filter(booked_hostel.name==request.form['search']).first()
-        user = genius.query.filter_by(name=request.form['search']).first()
-        if not user:
-            flash('user does not exist')
-            return redirect(url_for('users'))
-        else:
+        if genius.query.filter_by(name=request.form['search'].capitalize()).first():
+            user = genius.query.filter_by(name=request.form['search'].capitalize()).first()
             books=borrowed_books.query.filter_by(name=request.form['search']).first()
             return render_template('user.html',user=user.name,password=user.password,image=user.image,name=booked_hostel.query.filter(booked_hostel.name==request.form['search']).first(),books=books)
+        elif genius.query.filter_by(lname=request.form['search'].capitalize()).first():
+            user = genius.query.filter_by(lname=request.form['search'].capitalize()).first()
+            books=borrowed_books.query.filter_by(name=request.form['search']).first()
+            return render_template('user.html',user=user.name,password=user.password,image=user.image,name=booked_hostel.query.filter(booked_hostel.name==request.form['search']).first(),books=books)
+        elif genius.query.filter_by(oname=request.form['search'].capitalize()).first():
+            user = genius.query.filter_by(oname=request.form['search'].capitalize()).first()
+            books=borrowed_books.query.filter_by(name=request.form['search']).first()
+            return render_template('user.html',user=user.name,password=user.password,image=user.image,name=booked_hostel.query.filter(booked_hostel.name==request.form['search']).first(),books=books)
+        elif genius.query.filter_by(fname=request.form['search'].capitalize()).first():
+            user = genius.query.filter_by(fname=request.form['search'].capitalize()).first()
+            books=borrowed_books.query.filter_by(name=request.form['search']).first()
+            return render_template('user.html',user=user.name,password=user.password,image=user.image,name=booked_hostel.query.filter(booked_hostel.name==request.form['search']).first(),books=books)
+        else:
+            flash('user does not exist')
+            return redirect(url_for('users'))
     return render_template('all.html')
 
 @app.route('/superadmin',methods=['POST','GET'] )
@@ -107,7 +150,7 @@ def superadmin():
         user = request.form['username']
         if not request.form['username'] or not request.form['password']:
             flash("please fill all fields")
-        elif request.form['username'] != "Godwill" or request.form['password']!= "trevor":
+        elif request.form['username'].capitalize() != "Godwill" or request.form['password']!= "trevor":
             flash("wrong details")
         else:
             return render_template("superadmin.html", user=user)
@@ -117,7 +160,7 @@ def superadmin():
 @app.route('/add_admin', methods =[ 'POST','GET'])
 def add_admin():
     if request.method == 'POST':
-        newadmin=Admin(username=request.form['username'],password=request.form['password'])
+        newadmin=Admin(username=request.form['username'].capitalize(),password=request.form['password'])
         if not request.form['username'] or not request.form['password']:
             flash("please fill all the fields")
         elif Admin.query.filter(Admin.username==request.form['username']).first():
@@ -132,7 +175,7 @@ def admin():
     if request.method=='POST':
         if not request.form['username'] or not request.form['password']:
             flash('please fill all fields')
-        admin=Admin.query.filter(Admin.username==request.form['username']).first()
+        admin=Admin.query.filter(Admin.username==request.form['username'].capitalize()).first()
         if not admin:
             flash('Sorry you are not an admin please contact the super admin')
         elif not sha256_crypt.verify(request.form['password'], admin.password):
@@ -141,18 +184,24 @@ def admin():
             session['admin']=admin.username
             return render_template('admin_loggedin.html',user=session['admin'])
     return render_template('admin.html')
+
+@app.route('/admin_logout')
+def admin_logout():
+    session.pop('admin', None)
+    return redirect(url_for('admin'))
 @app.route('/delete', methods=['GET','POST'])
 def delete():
-    if request.method=='POST':
-        user=genius.query.filter(genius.name==request.form['name']).first()
-        if not user:
-            flash('the user does not exist')
-        else:
-            db.session.delete(user)
-            db.session.commit()
-            flash('user successfully deleted')
-            return redirect(url_for('users'))
-    return redirect(url_for('users'))
+    if 'admin' in session:
+        if request.method=='POST':
+            user=genius.query.filter(genius.name==request.form['name']).first()
+            if not user:
+                flash('the user does not exist')
+            else:
+                db.session.delete(user)
+                db.session.commit()
+                flash('user successfully deleted')
+                return redirect(url_for('users'))
+        return redirect(url_for('users'))
 @app.route('/user_logout')
 def user_logout():
     session.pop('user')
@@ -185,7 +234,8 @@ def changepass():
 
 @app.route('/admin_loggedin', methods=['POST','GET'])
 def admin_loggedin():
-    return render_template('admin_loggedin.html',user=session['admin'])
+    if 'admin' in session:
+        return render_template('admin_loggedin.html',user=session['admin'])
 
 @app.route('/add_hostel', methods=['POST','GET'])
 def add_hostel():

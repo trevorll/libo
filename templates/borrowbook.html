@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+<nav>
+  <a href="{{url_for('success')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return home</button> </a>
+</nav>
     <link rel="stylesheet" href="static/css/forms.css">
     <link rel="stylesheet" href="image.html">
     <div class="">
@@ -14,7 +17,7 @@
   <body style="background:url(static/img/database.jpg)">
     <div class="center">
       <form class="" action="{{url_for('borrowbook')}}" method="post">
-        serialno <input type="number" name="serialno" value="" placeholder="serialno"><br>
+        <b>serial number</b> <input style="background:#f5eeee36;" type="number" name="serialno" value="" placeholder="serialno"><br>
         <input type="submit" name="submit" value="SUBMIT" style="float:left !important">
       </form>
     </div>

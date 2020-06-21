@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" href="image.html">
   </head>
+  <nav>
+    <a href="{{url_for('success')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return home</button> </a>
+  </nav>
   <div class="center">
   <div style="color:red">
     {%for message in get_flashed_messages()%}
@@ -14,12 +18,12 @@
   </div>
   <div>
     <form class="" action="{{url_for('book_hostel')}}" method="post">
-      username <input type="text" name="username" value=""id="username" placeholder="username">
-    book hostel <input type="text" name="hostel" value="" placeholder="book hostel">
+      <b>username</b> <input type="text" name="username" value=""id="username" placeholder="username">
+      <b>hostel name</b> <input type="text" name="hostel" value="" placeholder="book hostel">
     <input type="submit" name="submit" value="SUBMIT">
     </form>
   </div>
-  
+
   <div>
     <h3>available hostels</h3>
     <table>
@@ -34,3 +38,8 @@
 
   </body>
 </html>
+<style media="screen">
+  body {
+    background: url(static/img/bg-09.jpg)
+  }
+</style>

@@ -2,6 +2,8 @@
 /* Style inputs, select elements and textareas */
 input[type=text], select, textarea{
   width: 100%;
+  background: #00000054;
+  color:white;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -11,7 +13,9 @@ input[type=text], select, textarea{
 input[type=password],input[type=email], select, textarea{
   width: 100%;
   padding: 12px;
+  color:white;
   border: 1px solid #ccc;
+  background:transparent;
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
@@ -38,19 +42,22 @@ input[type=submit] {
 /* Style the container */
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background:#0000006e;
   padding: 20px;
   position: fixed;
   margin-left: auto;
   margin-right: auto;
 }
 input[type=number] {
-  color: white;
+  /* color: white; */
   padding: 12px 20px;
   border: none;
+  color:white;
+  background:#0000006e;
   border-radius: 4px;
   cursor: pointer;
   float: center;
+  width: 90%;
 }
 
 /* Floating column for labels: 25% width */
@@ -93,4 +100,8 @@ input[type=number] {
   bottom:0;
   color:purple;
 
+}
+b {
+  color:white;
+  background:#0000006e;
 }

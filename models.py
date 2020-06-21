@@ -123,6 +123,23 @@ class books(db.Model):
         db.session.add(self)
         db.session.commit()
 
+class number(db.Model):
+    __tablename__="number"
+    name = db.Column(db.String, db.ForeignKey('fixed.name'),primary_key=True,nullable=False)
+    number = db.Column(db.Integer)
+    fixed=db.relationship('genius',backref=db.backref('number',cascade='all,delete'))
+
+    def __init__(self, name,number):
+        self.name = name
+        self.number = number
+
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+
 class borrowed_books(db.Model):
     __tablename__= 'borrowed_books'
     serialno=db.Column((db.Integer),db.ForeignKey('books.serialno'),primary_key=True,nullable=False)

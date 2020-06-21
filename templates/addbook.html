@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <nav>
+    <a href="{{url_for('admin_loggedin')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">home</button> </a>
+  </nav>
   <link rel="stylesheet" href="static/css/forms.css">
   <link rel="stylesheet" href="image.html">
   <body style="background:url(static/img/add-books.jpg)">
@@ -13,12 +16,12 @@
     {%endfor%}
   </div>
     <div class="center">
-      <form style="background:black" class="" action="{{url_for('add_book')}}" method="post">
-        serialno <input type="number" style"width:70%;" name="serialno" value="" placeholder="serial number"><br>
-        name <input type="text" name="name" value="" placeholder="name of the book"><br>
-        author <input type="text" name="author" value="" id="author" placeholder="author"><br>
-        section <input type="text" name="section" value="" placeholder="section"><br>
-        quantity <input type="number" name="quantity" value="" placeholder="nuber of books available"><br>
+      <form style="" class="" action="{{url_for('add_book')}}" method="post">
+        <b></b>serialno</b> <input type="number" style"width:70%;" name="serialno" value="" placeholder="serial number"><br>
+        <b>name</b> <input type="text" name="name" value="" placeholder="name of the book"><br>
+        <b>author</b> <input type="text" name="author" value="" id="author" placeholder="author"><br>
+        <b>section</b> <input type="text" name="section" value="" placeholder="section"><br>
+        <b>quantity</b> <input type="number" name="quantity" value="" placeholder="nuber of books available"><br>
         <input type="submit" name="submit" value="SUBMIT">
       </form>
 

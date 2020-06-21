@@ -8,7 +8,7 @@
   </head>
 
   <body class="center" style="background-image: url({{ url_for("static",filename="img/bg-09.jpg") }}">
-    <a href="{{url_for('test')}}" > <button type="button" style="background:black;float:center;" name="button">signup</button></a>
+    <a href="{{url_for('test')}}" > <button type="button" style="background: #0000006e !important; color:white;" name="button">signup</button></a>
     <div style="color:red;">
       {% for message in get_flashed_messages()%}
       {{ message }}
@@ -17,9 +17,11 @@
 
     <div >
     <form class="container" action="{{url_for('login')}}" method="post">
-      <b>name</b> <input type="text" name="name" id="name" value="" placeholder="name"><br>
-      <b>password</b> <input type="password" name="password" id="password" placeholder="password" value=""><br>
-      <input type="submit" name="submit" value="SUBMIT">
+      <div style="color:white; background:#0000006e"><b>name</b></div>
+      <input type="text" name="name" id="name" value="" placeholder="name"><br>
+      <div style="color:white; background:#0000006e"><b>password</b></div>
+      <input type="password" name="password" id="password" placeholder="password" value=""><br>
+      <input type="submit" name="submit" value="LOGIN">
 
     </form>
     </div>

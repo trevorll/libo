@@ -5,6 +5,9 @@
     <title></title>
     <link rel="stylesheet" href="image.html">
   </head>
+  <nav>
+    <a href="{{url_for('admin_loggedin')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">home</button> </a>
+  </nav>
   <div class="all">
     {%for message in get_flashed_messages()%}
     {{message}}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="static/css/forms.css">
+  <body class="center" >
+    <div style="color:red">
+      {% for message in get_flashed_messages()%}
+      {{ message }}
+      {% endfor %}
+    </div>
+    <div>
+    <form  action="{{url_for('verify')}}" method="post">
+      <input type="text" name="name" value="" placeholder="username"><br>
+      <input type="number" name="number" value="" placeholder="verificatin code"><br>
+      <input type="submit" name="" value="SUBMIT">
+    </form>
+    </div>
+  </body>
+</html>
+<style>
+  table,tr,td,th{
+    width:500px;
+
+    border-color:red;
+    th;
+    }
+    img{
+      width: 150px;
+      height:200px;
+    }
+    body{
+      background: url(/home/godwill/test1/great-app/great-app/static/img/books.jpg) 0 0 no-repeat fixed;
+}
+</style>
