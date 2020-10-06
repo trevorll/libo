@@ -1,5 +1,9 @@
-@import url(static/img);
 /* Style inputs, select elements and textareas */
+@media(min-width:320px){
+  .logo{
+    padding:10px;
+  }
+}
 input[type=text], select, textarea{
   width: 100%;
   background: #00000054;
@@ -10,7 +14,7 @@ input[type=text], select, textarea{
   box-sizing: border-box;
   resize: vertical;
 }
-input[type=password],input[type=email], select, textarea{
+input[type=password],input[type=email],input[type=file], select, textarea{
   width: 100%;
   padding: 12px;
   color:white;
@@ -48,7 +52,7 @@ input[type=submit] {
   margin-left: auto;
   margin-right: auto;
 }
-input[type=number] {
+input[type=number], select {
   /* color: white; */
   padding: 12px 20px;
   border: none;

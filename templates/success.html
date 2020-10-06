@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="image.html">
+
+
   </head>
 
-  <img src="{{image}}" alt="default"></img>
+  <img src="{{image}}"></img>
   <body class="center">
     <div>
       <div class="login">
@@ -26,7 +27,6 @@
       <a href="{{url_for('borrowbook')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">borrow book</button> </a>
       <a href="{{url_for('availablebooks')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">available books</button> </a>
       <a href="{{url_for('returnbook')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return books</button> </a>
-
     </div>
     <div class="footer">
       <footer style="color:purple" > <b></b>&copy <span>Godwill</span> </b> </footer>
@@ -38,7 +38,7 @@
     text-align: center;
     background-color: blue;
     color: white;
-    background: url(static/img/landscape.jpg)
+    background: url(landscape.jpg)
   }
   img{
     height: 100px;

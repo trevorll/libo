@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="static/css/forms.css">
-    <link rel="stylesheet" href="image.html">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   </head>
   <nav>
     <a href="{{url_for('success')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return home</button> </a>
@@ -18,28 +17,23 @@
   </div>
   <div>
     <form class="" action="{{url_for('book_hostel')}}" method="post">
-      <b>username</b> <input type="text" name="username" value=""id="username" placeholder="username">
-      <b>hostel name</b> <input type="text" name="hostel" value="" placeholder="book hostel">
+      <b>username</b> <input type="text" name="username" value="{{session['user']}}" id="username" placeholder="username" disabled/>
+      <b>choose hostel</b>
+      <select id="hostel" name="hostel">
+      {%for hostel in hostels%}
+      <option value="{{hostel.name}}">{{hostel.name}}</option>
+      {%endfor%}
+      </select>
     <input type="submit" name="submit" value="SUBMIT">
     </form>
   </div>
 
-  <div>
-    <h3>available hostels</h3>
-    <table>
-      {%for hostel in hostels%}
-      <tr>
-        <td>{{hostel.name}}</td>
-      </tr>
-      {%endfor%}
-    </table>
-  </div>
 
 
   </body>
 </html>
 <style media="screen">
   body {
-    background: url(static/img/bg-09.jpg)
+    background: url(bg-09.jpg)
   }
 </style>

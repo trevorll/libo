@@ -7,8 +7,7 @@
     <meta charset="utf-8">
     <title style text-color:blue>TITLE</title>
   </head>
-  <link rel="stylesheet" href="static/css/forms.css">
-  <link rel="stylesheet" href="image.html">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   <nav>
     <!-- <a href="{{url_for('test')}}">signup</a> -->
   </nav>
@@ -20,7 +19,7 @@
     </div>
     <div>
     <form action="{{url_for('changepass')}}" method="post">
-      <b>name</b> <input type="text" name="name" id="name" value="" placeholder="name"><br>
+      <b>name</b> <input type="text" name="name" id="name" value="{{session['user']}}" disabled placeholder="name"><br>
       <b>password</b> <input type="password" name="prev_pass" id="prev_pass" placeholder="previous password" value=""><br>
       <b>repeat password</b> <input type="password" name="new_pass" value="" id="new_pass" placeholder="new password">
       <input type="submit" name="submit" value="SUBMIT">
@@ -32,6 +31,6 @@
 </html>
 <style media="screen">
   body {
-    background: url(static/img/landscape.jpg)
+    background: url(landscape.jpg)
   }
 </style>

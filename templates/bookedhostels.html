@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -20,7 +19,7 @@
       <input type="submit" name="submit" value="SUBMIT">
     </form> -->
     <h3>search</h3>
-  <form class="" action="{{url_for('search_user')}}" method="post">
+  <!-- <form class="" action="{{url_for('search_user')}}" method="post">
     <input style="background: #0000006e !important;" type="text" name="search" id="search" placeholder="search user" value=""><br>
     <select required style="background: #0000006e !important;" id="filter" name="filter">
     <option value="None" selected>Filter by</option>
@@ -28,30 +27,29 @@
     <option value="first name">first name</option>
     <option value="last name">last name</option>
     <option value="other name">other name(s)</option>
-  </select><br>
-    <input style="background: #0000006e !important;" type="submit" name="search" value="search"><br>
-  </form>
+  </select><br> -->
+    <!-- <input style="background: #0000006e !important;" type="submit" name="search" value="search"><br>
+  </form> -->
     <h3>users</h3>
     <a href="{{url_for('users')}}"></a>
     <thead>
       <tr>
-        <th>Name</th>
         <table border="1">
           <tr>
             <th>Name</th>
             <!-- <th>password</th> -->
-            <th> image </th>
-            <th>delete</th>
+            <th> booked hostel </th>
+            <th>unbooked</th>
 
           </tr>
             {%for user in users%}
             <tr>
-              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>
               <!-- <td>{{user.password}}</td> -->
-              <td> <img  src="{{user.image}}"> </td>
-              <td><form class="" action="{{url_for('delete')}}" method="post">
-                <input type="hidden" name="name" value="{{user.name}}">
-                <input type="submit" value="Delete">
+              <td> {{user.hostel}} </td>
+              <td><form class="" action="{{url_for('unbookhostel')}}" method="post">
+                <input type="hidden" name="username" value="{{user.name}}">
+                <input style="background: #0000006e !important;" type="submit" value="unbook">
               </form> </td>
             </tr>
             {%endfor%}

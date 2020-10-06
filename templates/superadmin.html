@@ -5,7 +5,7 @@
     <title>superadmin</title>
     <h1>Welcome <span>{{user}}</span></h1>
   </head>
-  <link rel="stylesheet" href="static/css/forms.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   <body>
     <div class="superadmin">
       {% for message in get_flashed_messages()%}

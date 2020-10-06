@@ -7,9 +7,8 @@
   <nav>
     <a href="{{url_for('admin_loggedin')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">home</button> </a>
   </nav>
-  <link rel="stylesheet" href="static/css/forms.css">
-  <link rel="stylesheet" href="image.html">
-  <body style="background:url(static/img/add-books.jpg)">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
+  <body style="background:url(add-books.jpg)">
   <div style="color:red" class="">
     {% for message in get_flashed_messages() %}
     {{message}}

@@ -7,13 +7,12 @@
   <nav>
     <a href="{{url_for('success')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return home</button> </a>
   </nav>
-  <link rel="stylesheet" href="image.html">
   <div class="">
     {%for message in get_flashed_messages() %}
     {{message}}
     {%endfor%}
   </div>
-  <body style="background:url(static/img/landscape.jpg)">
+  <body style="background:url(landscape.jpg)">
     <table border="1">
       <tr>
         <th>Name</th>

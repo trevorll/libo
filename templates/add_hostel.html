@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   </head>
   <nav>
     <a href="{{url_for('admin_loggedin')}}"> <button style="background: auto; color:black !important" type="button" name="button">home</button> </a>

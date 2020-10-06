@@ -7,17 +7,21 @@
 <nav>
   <a href="{{url_for('success')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">return home</button> </a>
 </nav>
-    <link rel="stylesheet" href="static/css/forms.css">
-    <link rel="stylesheet" href="image.html">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
     <div class="">
       {%for message in get_flashed_messages() %}
       {{message}}
       {%endfor%}
     </div>
-  <body style="background:url(static/img/main-bg.jpg)">
+  <body style="background:url(main-bg.jpg)">
     <div class="center">
       <form class="" action="{{url_for('returnbook')}}" method="post">
-        <b>serial number</b> <input style="" type="number" name="serialno" value="" placeholder="serialno"><br>
+        <select id="serialno" name="serialno" placeholder="select book to return">
+          <option value="None" selected>Select a book to return</option>
+        {%for book in books%}
+        <option value="{{book[1]}}">{{book[2]}}</option>
+        {%endfor%}
+        </select>
         <input type="submit" name="submit" value="RETURN BOOK" style="float:left !important">
       </form>
     </div>

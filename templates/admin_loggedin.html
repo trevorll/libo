@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="static/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
     <h1 style="text-align:center;">Welcome <span style="color:purple;">{{user}}</span></h1>
   </head>
   <nav>
     <a href="{{url_for('admin_logout')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">logout</button> </a>
   </nav>
-  <link rel="stylesheet" href="image.html">
-  <body class="center" style="background: url(static/img/bg-09.jpg); width:40% !important">
+  <body class="center" style="background: url(bg-09.jpg); width:40% !important">
   <div style="color:red" class="admin_loggedin">
     {%for message in get_flashed_messages()%}
     {{message}}
@@ -22,6 +21,7 @@
     <a href="{{url_for('add_hostel')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">add hostel</button> </a>
     <a href="{{url_for('add_book')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">add book</button> </a>
     <a href="{{url_for('borrowedbooks')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">borrowed books</button> </a>
+    <a href="{{url_for('unbookhostel')}}"> <button style="background: #0000006e !important; color:white;" type="button" name="button">unbook hostel</button> </a>
   </div>
 
   </body>

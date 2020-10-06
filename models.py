@@ -138,20 +138,34 @@ class number(db.Model):
         db.session.add(self)
         db.session.commit()
 
+class search_object():
+    users=list()
+    query=None
+
+    def __init__(self,users,query):
+        self.users=users
+        self.query=query
+
+
 
 
 class borrowed_books(db.Model):
     __tablename__= 'borrowed_books'
-    serialno=db.Column((db.Integer),db.ForeignKey('books.serialno'),primary_key=True,nullable=False)
+    id =db.Column(db.Integer,primary_key=True)
+    serialno=db.Column((db.Integer),db.ForeignKey('books.serialno'),nullable=False)
+    title= db.Column((db.String),nullable=False)
     books=db.relationship('books',backref=db.backref('books',cascade = 'all,delete'))
     name=db.Column((db.String),db.ForeignKey('fixed.name'),nullable=False)
     fixed=db.relationship('genius',backref=db.backref('fixed',cascade='all,delete'))
     borrowed_date=db.Column(db.DateTime)
+    return_date= db.Column(db.DateTime)
 
-    def __init__(self, serialno,name,borrowed_date):
+    def __init__(self,serialno,title,name,borrowed_date,return_date):
         self.serialno=serialno
+        self.title=title
         self.name=name
         self.borrowed_date=borrowed_date
+        self.return_date = return_date
 
     def save(self):
         db.session.add(self)
@@ -160,8 +174,8 @@ class borrowed_books(db.Model):
 
 
 class search_object():
-    Users=list()
+    users=list()
 
     def __init__(self, Users,query):
-        self.Users=users
+        self.users=users
         self.query=None

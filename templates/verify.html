@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <link rel="stylesheet" href="static/css/forms.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   <body class="center" >
     <div style="color:red">
       {% for message in get_flashed_messages()%}
@@ -32,6 +32,6 @@
       height:200px;
     }
     body{
-      background: url(/home/godwill/test1/great-app/great-app/static/img/books.jpg) 0 0 no-repeat fixed;
+      background: url(books.jpg) 0 0 no-repeat fixed;
 }
 </style>

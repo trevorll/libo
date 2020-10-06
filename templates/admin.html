@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <link rel="stylesheet" href="static/css/forms.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
   <body class="center">
     <div style="color:red"  class="">
       {% for message in get_flashed_messages()%}
@@ -23,6 +23,6 @@
 
 <style media="screen">
   body {
-    background: url(static/img/bg-09.jpg)
+    background: url(bg-09.jpg)
   }
 </style>

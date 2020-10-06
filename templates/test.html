@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title style text-color:blue>TITLE</title>
   </head>
-  <link rel="stylesheet" href="static/css/forms.css">
-  <link rel="stylesheet" href="image.html">
+  <link rel="stylesheet" href="{{ url_for("static",filename="css/forms.css") }}"/>
   <body class="center" >
     <div style="color:red">
       {% for message in get_flashed_messages()%}
@@ -14,14 +13,14 @@
       {% endfor %}
     </div>
     <div>
-    <form class="" action="{{url_for('test')}}" method="post">
+    <form class="" action="{{url_for('test')}}" method="post" enctype="multipart/form-data">
       <b>first name</b> <input type="text" name="fname" value="" placeholder="first name" required autofocus><br>
       <b>sir name</b> <input type="text" name="lname" value="" placeholder="last name" required autofocus><br>
       <b>other name</b> <input type="text" name="oname" value="" placeholder="other names" required autofocus><br>
       <b>username</b><input type="text" name="name" id="name" value="" placeholder="username" required autofocus><br>
       <b>password</b> <input type="password" name="password" placeholder="password" id="password" value="" required autofocus><br>
       <b>repeat password</b> <input type="password" name="rep_pass" value="" placeholder="repeat password" required autofocus><br>
-      <b>image url</b> <input type="text" name="image" value="" placeholder="image url" required autofocus><br>
+      <b>image url</b> <input type="file" name="file" value="" placeholder="image url" required autofocus><br>
       <b>email</b> <input type="email" name="email" value="" placeholder="email address" required autofocus><br>
       <input type="submit" name="submit" value="SUBMIT">
     </form>
@@ -41,6 +40,6 @@
       height:200px;
     }
     body{
-      background: url(static/img/bg-09.jpg) 0 0 no-repeat fixed;
+      background: url(bg-09.jpg) 0 0 no-repeat fixed;
 }
 </style>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="static/css/forms.css">
+<link href="/css/forms.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for("static",filename="css/forms.css") }}"/>
 <html lang="en" dir="ltr">
   <head>
 
@@ -7,7 +8,7 @@
     <title style text-color:blue>TITLE</title>
   </head>
 
-  <body class="center" style="background-image: url({{ url_for("static",filename="img/bg-09.jpg") }}">
+  <body class="center" style="background-image: url({{ url_for("static",filename="bg-09.jpg") }}">
     <a href="{{url_for('test')}}" > <button type="button" style="background: #0000006e !important; color:white;" name="button">signup</button></a>
     <div style="color:red;">
       {% for message in get_flashed_messages()%}
@@ -32,6 +33,6 @@
 
 
   </body>
-
+<script src="{{ url_for("static",filename="css/forms.css") }}"></script>
 
 </html>
