@@ -29,7 +29,7 @@ Flask-Paranoid==0.2.0
 Flask-Principal==0.4.0
 Flask-RESTful==0.3.8
 Flask-Script==2.0.6
-Flask-Security-Too==3.4.2
+Flask-Security-Too==3.4.5
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.14.2
 httplib2==0.9.2
