@@ -59,7 +59,7 @@ passlib==1.7.1
 pbr==5.4.5
 pexpect==4.2.1
 Pillow==5.1.0
-protobuf==3.0.0
+protobuf==3.18.3
 psutil==5.4.2
 psycopg2==2.8.5
 pyasn1==0.4.2
